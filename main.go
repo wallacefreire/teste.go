@@ -1,24 +1,39 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-	"log"
-)
+import "fmt"
 
-func main() {
-	res, err := soma(7, 9)
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-	fmt.Println(res)
+type Carro struct {
+	Nome string
 }
 
-func soma(x int, y int) (int, error) {
-	res := x + y
-	if res > 10 {
-		return 0, errors.New("Total maior que 10")
+func (c Carro) andar() {
+	fmt.Println(c.Nome, "andou")
+}
+
+func main() {
+
+	carro := Carro{
+		Nome: "Classic",
 	}
 
-	return res, nil
+	carro.andar()
+
+	resultado := func(x ...int) func() int {
+
+		resultado := 0
+
+		for _, value := range x {
+			resultado += value
+		}
+		return func() int {
+			return resultado * resultado
+		}
+	}
+
+	fmt.Println(resultado(54, 54, 54, 54)())
+}
+
+func soma(primeiroNumero int, segundoNumero int) (result int) {
+	result = primeiroNumero + segundoNumero
+	return
 }
