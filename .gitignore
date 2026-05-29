@@ -1,0 +1,10 @@
+# Binários compilados
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Pastas do sistema
+.DS_Store
+Thumbs.db
